@@ -1,7 +1,7 @@
 const ViewPokemon = ({ pokeArr }) => {
   //generatePokeUi: Maps through pokemon array
-  const generatePokeUi = pokeArr.map((elem, index) => (
-    //For each, construct FIGURE, child IMG
+  const mapPoke = pokeArr.map((elem, index) => (
+    //For each, construct DIV, child IMG, H3, etc...
     <div
       key={`pokeFig${index}`}
       id={`pokeFig${index}`}
@@ -22,6 +22,6 @@ const ViewPokemon = ({ pokeArr }) => {
   ));
 
   //Return: DIV child: FIGURE
-  return <div>{generatePokeUi}</div>;
+  return <div className="allPokeItems">{mapPoke}</div>;
 };
 export default ViewPokemon;

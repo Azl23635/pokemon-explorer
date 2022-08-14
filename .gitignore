@@ -25,3 +25,5 @@ dist-ssr
 vite.config.js
 public/vite.svg
 src/assets/react.svg
+src/styles.css.map
+src/styles.scss

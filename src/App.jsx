@@ -5,7 +5,6 @@ import ViewPokemon from './ViewPokemon';
 
 function App() {
   const [pokeArr, setPoke] = useState([]);
-
   return (
     <div className="App">
       <GeneratePokemon pokeArr={pokeArr} setPoke={setPoke} />
