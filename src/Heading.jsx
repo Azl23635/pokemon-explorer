@@ -4,7 +4,7 @@ const Heading = () => {
       <div className="headings">
         <img
           className="pokeLogo"
-          src="/public/pokemonLogo.png"
+          src="pokemonLogo.png"
           alt="pokemon logo"
         />
         <h1>Random Generator</h1>
