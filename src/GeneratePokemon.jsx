@@ -1,10 +1,18 @@
 import { useEffect } from 'react';
 
-const GeneratePokemon = ({ pokeArr, setPoke }) => {
+const GeneratePokemon = ({
+  pokeArr,
+  setPoke,
+  setOpacity,
+  imgLoad,
+  setLoaded,
+}) => {
   //Fetch random pokemon's data from API
   const genPokeId = () => Math.floor(Math.random() * 905) + 1;
 
   const POKE_URL = `https://pokeapi.co/api/v2/pokemon/`;
+
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
   const getPoke = async () => {
     const randomPokeUrl = `${POKE_URL}${genPokeId()}/`;
@@ -28,24 +36,35 @@ const GeneratePokemon = ({ pokeArr, setPoke }) => {
     };
     return formattedData;
   };
-  //
-  //if
+  useEffect(() => {
+    imgLoad ? setOpacity('isOpaque') : null;
+  }, [imgLoad]);
+
   const handleGenerate = async () => {
+    setOpacity('notOpaque');
+    setLoaded(false);
     let pokemonData = await getPoke();
     let formattedPokemonData = await formatPokeData(pokemonData);
 
+    await sleep(150);
+    await setOpacity('translateMiddle');
+    await sleep(10);
     if (pokeArr.length < 3) {
-      await setPoke(pokeArr.concat(formattedPokemonData));
+      await setPoke([formattedPokemonData].concat(pokeArr));
     } else {
-      await setPoke(pokeArr.slice(1).concat(formattedPokemonData));
+      await setPoke(
+        [formattedPokemonData].concat(pokeArr.slice(0, 2))
+      );
     }
   };
 
-  useEffect(() => console.log(pokeArr), [pokeArr]);
-
   return (
-    <div>
-      <button type="button" onClick={handleGenerate}>
+    <div className="headings headings-btn">
+      <button
+        type="button"
+        className="gen-btn"
+        onClick={handleGenerate}
+      >
         Generate
       </button>
     </div>
