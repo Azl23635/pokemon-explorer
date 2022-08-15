@@ -14,9 +14,9 @@ const ViewPokemon = ({ pokeArr, isOpaque, setLoaded }) => {
       href={`https://pokemon.fandom.com/wiki/${elem.name}`}
       target="_blank"
       className="pokeLink"
+      key={`pokeFig${index}`}
     >
       <div
-        key={`pokeFig${index}`}
         id={`pokeFig ${elem.name}`}
         name={elem.name}
         className={`individualPokeItem ${elem.type}`}
@@ -37,7 +37,7 @@ const ViewPokemon = ({ pokeArr, isOpaque, setLoaded }) => {
           <div className="statDiv">
             <img
               className="statIcons"
-              src={'src/assets/heart.svg'}
+              src={'heart.svg'}
               alt="heart"
             />
             <p className="pokeStats">Health: </p>
@@ -49,7 +49,7 @@ const ViewPokemon = ({ pokeArr, isOpaque, setLoaded }) => {
           <div className="statDiv">
             <img
               className="statIcons"
-              src={'src/assets/attack.svg'}
+              src={'attack.svg'}
               alt="attack"
             />
             <p className="pokeStats">Attack: </p>
@@ -61,14 +61,14 @@ const ViewPokemon = ({ pokeArr, isOpaque, setLoaded }) => {
           <div className="statDiv">
             <img
               className="statIcons"
-              src={'src/assets/defense.svg'}
+              src={'defense.svg'}
               alt="defense"
             />
 
             <p className="pokeStats">Defense: </p>
             <p className="statVal">
               {elem.defense}
-              <b />
+              <br />
             </p>
           </div>
         </div>

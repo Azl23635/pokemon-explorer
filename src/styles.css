@@ -149,19 +149,21 @@ html .allPokeItems {
 html .allPokeItems .translateMiddle {
   transition: none;
 }
-html .allPokeItems .pokeNames,
-html .allPokeItems .type {
+html .allPokeItems .pokeNames {
   -webkit-text-fill-color: black; /* Will override color (regardless of order) */
-  -webkit-text-stroke-width: 0.3px;
+  -webkit-text-stroke-width: 0.1px;
   -webkit-text-stroke-color: white;
 }
 html .allPokeItems .pokeNames {
   font-size: 1.8em;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
 }
 html .allPokeItems .type {
   font-size: 1.2em;
   margin-top: -4px;
   margin-bottom: -5px;
+  text-decoration: none;
 }
 html .allPokeItems .individualPokeItem {
   background-color: antiquewhite;
@@ -211,6 +213,7 @@ html .allPokeItems .individualPokeItem .statDiv {
 }
 html .allPokeItems .individualPokeItem .pokeStats {
   width: 30px;
+  flex: none;
 }
 html .allPokeItems .individualPokeItem .statVal {
   text-align: right;
