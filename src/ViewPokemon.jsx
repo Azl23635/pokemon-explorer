@@ -1,27 +1,82 @@
-const ViewPokemon = ({ pokeArr }) => {
+const ViewPokemon = ({ pokeArr, isOpaque, setLoaded }) => {
+  //Called when image loads
+  const handleImgLoad = (index) => {
+    if (index === 'pokeImg0') {
+      setLoaded(true);
+    }
+  };
+
   //generatePokeUi: Maps through pokemon array
   const mapPoke = pokeArr.map((elem, index) => (
     //For each, construct DIV, child IMG, H3, etc...
-    <div
-      key={`pokeFig${index}`}
-      id={`pokeFig${index}`}
-      className="individualPokeItem"
+
+    <a
+      href={`https://pokemon.fandom.com/wiki/${elem.name}`}
+      target="_blank"
+      className="pokeLink"
     >
-      <h3 className="pokeNames">
-        {elem.name[0].toUpperCase() + elem.name.slice(1)}
-      </h3>
-      <img
-        src={elem.spriteUrl}
-        alt={`The official artwork of ${elem.name}`}
-      />
-      <p className="type">{elem.type.toUpperCase()}</p>
-      <p className="pokeStats">HP: {elem.hp}</p>
-      <p className="pokeStats">Attack: {elem.attack}</p>
-      <p className="pokeStats">Defense: {elem.defense}</p>
-    </div>
+      <div
+        key={`pokeFig${index}`}
+        id={`pokeFig ${elem.name}`}
+        name={elem.name}
+        className={`individualPokeItem ${elem.type}`}
+      >
+        <h3 className="pokeNames">
+          {elem.name[0].toUpperCase() + elem.name.slice(1)}
+        </h3>
+        <img
+          src={elem.spriteUrl}
+          alt={`The official artwork of ${elem.name}`}
+          id={`pokeImg${index}`}
+          onLoad={(e) => handleImgLoad(e.target.id)}
+        />
+        <p className="type">
+          <u>{elem.type.toUpperCase()}</u>
+        </p>
+        <div id="statBox">
+          <div className="statDiv">
+            <img
+              className="statIcons"
+              src={'src/assets/heart.svg'}
+              alt="heart"
+            />
+            <p className="pokeStats">Health: </p>
+            <p className="statVal">
+              {elem.hp}
+              <br />
+            </p>
+          </div>
+          <div className="statDiv">
+            <img
+              className="statIcons"
+              src={'src/assets/attack.svg'}
+              alt="attack"
+            />
+            <p className="pokeStats">Attack: </p>
+            <p className="statVal">
+              {elem.attack}
+              <br />
+            </p>
+          </div>
+          <div className="statDiv">
+            <img
+              className="statIcons"
+              src={'src/assets/defense.svg'}
+              alt="defense"
+            />
+
+            <p className="pokeStats">Defense: </p>
+            <p className="statVal">
+              {elem.defense}
+              <b />
+            </p>
+          </div>
+        </div>
+      </div>
+    </a>
   ));
 
   //Return: DIV child: FIGURE
-  return <div className="allPokeItems">{mapPoke}</div>;
+  return <div className={`allPokeItems ${isOpaque}`}>{mapPoke}</div>;
 };
 export default ViewPokemon;
