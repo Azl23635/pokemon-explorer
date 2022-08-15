@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import GeneratePokemon from './GeneratePokemon';
 import ViewPokemon from './ViewPokemon';
-import Logo from './Logo';
+import Heading from './Heading';
 
 function App() {
   const [pokeArr, setPoke] = useState([]);
@@ -10,7 +10,7 @@ function App() {
   const [imgLoad, setLoaded] = useState(false);
   return (
     <div className="App">
-      <Logo />
+      <Heading />
       <GeneratePokemon
         pokeArr={pokeArr}
         setPoke={setPoke}
