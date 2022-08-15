@@ -8,8 +8,6 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-dist
-dist-ssr
 *.local
 
 # Editor directories and files
@@ -28,3 +26,4 @@ src/assets/react.svg
 src/styles.css.map
 src/styles.scss
 src/assets/background.jpg
+deploy.sh
