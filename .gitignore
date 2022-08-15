@@ -28,3 +28,4 @@ src/styles.css.map
 src/styles.scss
 src/assets/background.jpg
 deploy.sh
+dist
